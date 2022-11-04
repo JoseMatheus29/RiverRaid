@@ -143,6 +143,7 @@ def opned():
 
     if base.y == -100 and plane.out:
         ler_pos()
+
     #Iniciando o jogo
     if base.y < 238 and game and intro:
         base.y+=1
@@ -168,6 +169,7 @@ def opned():
     if base.y == 238 and game and intro:
         plane.out = False
 
+    #Verifica se saiu
     for e in pygame.event.get():
         if e.type == pygame.QUIT or e.type == pygame.KEYDOWN and e.key == K_RCTRL:
             return True
@@ -434,7 +436,6 @@ def inimigos():
         gaz_end.stop()
         gaz_alert.stop()
 
-
 def lands():
     if game and not intro and not plane.t_expl:
         base.y += mover * vel_y
@@ -443,10 +444,10 @@ def lands():
         islands[i].y = base.y - (2000+i*246)
         terra[i].y = base.y - (330+i*300)
 
-
+        #verificando se a terra lateral chegou no limite da tela e voltando pra origem
         if terra[i].y < screen_height:
             terra[i].show()
-
+        #Verificando se a ilha chegou no limite da tela e voltando para a origem
         if islands[i].y < screen_height:
             islands[i].show()
 
@@ -455,10 +456,10 @@ def lands():
         casas[i].y+=mover * vel_y
 
         #criando as pocicoes
-        if casas[i]. y == screen_height:
+        if casas[i].y == screen_height:
             casas[i].y = 0
             rnd_casas = [0,1,2,3,4,5,6,7,8]
-            random.shuffle(rnd_casas)  # embaralha array
+            random.shuffle(rnd_casas)
             for j in range(0, 8):
                 casas[i].x = rnd_casas[j] * casas[i].w + 25
                 if hitcortest(casas[i], colors[3]) or pontes[2].t_expl or colidir(casas[i], pontes[0]) or colidir(casas[i],pontes[1]) or colidir(casas[i], pontes[2]):casas[i].out = True
