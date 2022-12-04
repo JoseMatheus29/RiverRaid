@@ -216,19 +216,3 @@ class Obj:
 
         if self.t_expl:
             self.t_expl -= 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

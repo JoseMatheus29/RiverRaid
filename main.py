@@ -128,7 +128,7 @@ def restart():
 
 def opned():
 
-    global game, intro, vidas, gaz_level, casas
+    global game, intro, vidas, gaz_level, casas, pontos
     #introdução do jogo
 
     if base.y < 238 and not game:
@@ -159,6 +159,7 @@ def opned():
 
     #controlando se o avião morreu
     if plane.out and not plane.t_expl and game and vidas > 0 and not intro:
+        pontos = 0
         intro = True
         gaz_level = 166
         pontes[2].out = True
@@ -195,6 +196,7 @@ def hitcortest(obj, cor):
                     if win.get_at((int(obj.x + i), int(obj.y + j))) == cor:
                         return True
     return False
+
 
 def colidir(a,b):
     return a.x + a.w > b.x and a.x < b.x + b.w and a.y + a.h > b.y and a.y < b.y + b.h
@@ -238,6 +240,7 @@ def ler_pos():
 
     terra[0].y = 100
 
+
 def hittest():
     global hitplane, gaz_level, mover, pontos, gaz_alert
     t_expl = 40
@@ -254,12 +257,8 @@ def hittest():
         hitplane = False
         plane.out = True
         gaz_alert.stop()
-        plane.t_expl = 80
-        s_gaz_alert = "gaz_full"
-        if gaz_level:
-            s_explode.play()
-        else:
-            gaz_explode.play()
+        plane.t_expl = 30
+
 
     enehit = 0
 
@@ -349,6 +348,7 @@ def hittest():
         elif enehit == 11:  # Posto gaz
             pontos += 30
 
+
 def inimigos():
     global helice, gaz_level, gazlev, s_gaz_alert
     helice = not helice
@@ -436,6 +436,7 @@ def inimigos():
         gaz_end.stop()
         gaz_alert.stop()
 
+
 def lands():
     if game and not intro and not plane.t_expl:
         base.y += mover * vel_y
@@ -479,7 +480,7 @@ def lands():
     if base.y > screen_height and not intro:
         pontes[2].out = False
 
-#função responsavel por pintar a tela
+
 def paint():
     pygame.display.update()
     #Rio
@@ -522,7 +523,6 @@ def paint():
         for i in range(3):
             terra[i].forma = random.randint(0, 7)
             islands[i].forma = random.randint(0, 3)
-
 
 
 def textos():
@@ -590,6 +590,7 @@ def control():
         if tiro.y == plane.y - 15:
             s_tiro.stop()
             s_tiro.play()
+
 
 restart()
 
