@@ -19,7 +19,7 @@
         <li><a href="https://pypi.org/project/pip/">Gerenciador de pacotes Pip</a></li>
         <li>Módulos Nativos:</li>
             <ul>
-                <li>Módulo PYgames</li>
+                <li><a href = "https://www.pygame.org/news">Módulo PYgames</a></li>
                 </ul>
         <li>Uma IDE para executar o projeto</li>
             <ul>
